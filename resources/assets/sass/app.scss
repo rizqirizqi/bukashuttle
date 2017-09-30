@@ -2,8 +2,31 @@
 // Fonts
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
 
-// Variables
-@import "variables";
+// Settings: Global variables, site-wide settings, config switches, etc.
+@import "1settings";
+// Tools: Site-wide mixins and functions.
+@import "2tools";
+// Generic: Low-specificity, far-reaching rulesets (e.g. resets).
+@import "3generic";
+// Elements: Unclassed HTML elements (e.g. `a {}`, `blockquote {}`, `address {}`).
+@import "4elements";
+// Objects: Objects, abstractions, and design patterns (e.g. `.o-container {}`, `.o-layout {}`, `.o-media {}`).
+@import "5objects";
+// Components: Discrete, complete chunks of UI (e.g. `.c-carousel {}`). This is the one layer that the framework doesn't get involved with.
+@import "6components";
+// Utilities: High-specificity, very explicit selectors. Overrides and helper classes (e.g. `.u-hide {}`, `.u-show`) the only place where `!important` is allowed.
+@import "7utilities";
 
-// Bootstrap
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+.page-footer {
+    background-color: white;
+}
+
+.btn-small {
+    width: 48px;
+    padding: 0;
+    margin-right: 2px;
+}
+  
+.action-column {
+    min-width: 39%;
+}
