@@ -37,3 +37,12 @@ php artisan key:generate
 touch database/database.sqlite
 php artisan migrate
 ```
+5. Webpack
+```
+npm install
+npm run dev
+```
+6. Run Laravel
+```
+php artisan serve
+```
