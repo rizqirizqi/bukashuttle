@@ -1,7 +1,4 @@
 
-// Fonts
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
-
 // Settings: Global variables, site-wide settings, config switches, etc.
 @import "1settings";
 // Tools: Site-wide mixins and functions.
@@ -17,16 +14,16 @@
 // Utilities: High-specificity, very explicit selectors. Overrides and helper classes (e.g. `.u-hide {}`, `.u-show`) the only place where `!important` is allowed.
 @import "7utilities";
 
-.page-footer {
-    background-color: white;
+.nav-wrapper {
+    background: $global-color-red-brand;
 }
 
-.btn-small {
-    width: 48px;
-    padding: 0;
-    margin-right: 2px;
+.userView .background {
+    background: $global-color-red-brand;
+    width: 300px;
+    height: 160px;
 }
-  
-.action-column {
-    min-width: 39%;
+
+[v-cloak] {
+    display: none;
 }

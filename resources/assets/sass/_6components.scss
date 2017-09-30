@@ -1,0 +1,17 @@
+.c-location-button {
+  display: inline-block;
+
+  & + & {
+    margin-left: 30px;
+  }
+
+  &--image {
+    display: block;
+    margin: auto;
+  }
+
+  &--name {
+    display: block;
+    text-align: center;
+  }
+}
