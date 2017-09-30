@@ -40,9 +40,9 @@ php artisan migrate
 5. Webpack
 ```
 npm install
-npm run dev
+npm run watch
 ```
-6. Run Laravel
+6. Run Laravel in another tab
 ```
 php artisan serve
 ```
