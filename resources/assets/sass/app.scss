@@ -27,3 +27,12 @@
 [v-cloak] {
     display: none;  
 }
+
+#departureTimeModal {
+    max-height: 90%;
+    height: 90%;
+    
+    &::-webkit-scrollbar { 
+        display: none;
+    }
+}

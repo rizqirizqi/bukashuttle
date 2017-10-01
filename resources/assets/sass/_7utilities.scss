@@ -1,5 +1,5 @@
 // ==========================================================================
-// Colors
+// Bukalapak Colors
 // ==========================================================================
 
 // Here we set a variable assuming that default and module settings
@@ -99,6 +99,10 @@ $imported-global-settings: false !default;
 
 .u-float-left {
   float: left;
+}
+
+.u-float-right {
+  float: right;
 }
 
 .u-clearfix {
