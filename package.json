@@ -17,5 +17,7 @@
     "node": "8.3.0",
     "npm": "5.3.0"
   },
-  "postinstall": "npm install"
+  "scripts": {
+    "postinstall": "npm run production"
+  }
 }
