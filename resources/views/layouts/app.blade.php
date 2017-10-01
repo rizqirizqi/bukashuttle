@@ -36,7 +36,7 @@
           </div>
         </li>
         <li><a href="/" class="waves-effect">Pesan Shuttle</a></li>
-        <li><a class="waves-effect">Riwayat Shuttle</a></li>
+        <li><a href="/history" class="waves-effect">Riwayat Shuttle</a></li>
         <li><div class="divider"></div></li>
         <li><a href="/about" class="waves-effect">Tentang BukaShuttle</a></li>
       </ul>
