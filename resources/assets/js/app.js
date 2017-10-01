@@ -30,7 +30,7 @@ const app = new Vue({
         bookingData: {
             origin: null,
             destination: null,
-            departureTime: null
+            departure: null
         },
         originElem: null,
         destinationElem: null
@@ -48,12 +48,20 @@ const app = new Vue({
     },
     methods: {
         selectLocation($thisEl) {
-            if (this.formStep == 0) {
-                this.selectOrigin($thisEl)
-            } else if (this.formStep == 1) {
-                this.selectDestination($thisEl)
+            if (!$($thisEl).hasClass('js-selected')) {
+                if (this.formStep == 0) {
+                    this.selectOrigin($thisEl)
+                } else if (this.formStep == 1) {
+                    this.selectDestination($thisEl)
+                } else {
+                    return null
+                }
             } else {
-                return null
+                if (this.formStep == 1) {
+                    this.unselecetOrigin($thisEl)
+                } else {
+                    return null
+                }
             }
         },
         selectOrigin($thisEl) {
@@ -64,6 +72,7 @@ const app = new Vue({
                 filter: 'gray',
                 filter: 'grayscale(100%)'
             })
+            $(this.originElem).addClass('js-selected')
         },
         selectDestination($thisEl) {
             this.destinationElem = $thisEl
@@ -73,13 +82,33 @@ const app = new Vue({
                 filter: 'gray',
                 filter: 'grayscale(100%)'
             })
+            $(this.destinationElem).addClass('js-selected')
             $('#departureTimeModal').modal('open')
+        },
+        unselecetOrigin() {
+            $(this.originElem).removeClass('js-selected')
+            $(this.originElem).css({
+                filter: 'none'
+            })
+            this.formStep = 0
+            this.bookingData.origin = null
+            this.originElem = null
+        },
+        unselecetDestination() {
+            $(this.destinationElem).removeClass('js-selected')
+            $(this.destinationElem).css({
+                filter: 'none'
+            })
+            this.formStep = 1
+            this.bookingData.destination = null
+            this.destinationElem = null
         },
         selectDepartureTime(departureTimeId) {
             if (this.formStep == 2) {
-                this.bookingData.departureTime = departureTimeId
+                this.bookingData.departure = departureTimeId
                 this.formStep = 3
                 $('#departureTimeModal').modal('close')
+                window.location.href = `/summary?origin=${this.bookingData.origin}&destination=${this.bookingData.destination}&departure=${this.bookingData.departure}`
                 // call ajax here, get list of users which have booked the schedule
             }
         }
@@ -90,13 +119,8 @@ const app = new Vue({
         $('#departureTimeModal').modal({
             dismissible: false,
             complete() {
-                if (_this.bookingData.departureTime == null) {
-                    $(_this.destinationElem).css({
-                        filter: 'none'
-                    })
-                    _this.formStep = 1
-                    _this.bookingData.destination = null
-                    _this.destinationElem = null
+                if (_this.bookingData.departure == null) {
+                    _this.unselecetDestination()
                 }
             }
         });

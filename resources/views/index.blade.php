@@ -10,21 +10,23 @@
         <h5 class="js-instruction" v-cloak=true>@{{instruction}}</h5>
       </div>
     </div>
-    <div class="row">
-      <div class="col s12 center u-mrgn-top--4">
+    <div class="row center">
+      <div class="col s6 u-mrgn-top--4">
         <a href="#" class="c-location-button" data-location-id=0 @click="selectLocation($event.currentTarget)">
           <img src="{{ asset('images/building.jpg') }}" class="c-location-button--image"/>
-          <span class="c-location-button--name">Ampera</span>
+          <span class="c-location-button--name">Jason</span>
         </a>
       </div>
-      <div class="col s12 center u-mrgn-top--6">
+      <div class="col s6 u-mrgn-top--4">
         <a href="#" class="c-location-button" data-location-id=1 @click="selectLocation($event.currentTarget)">
           <img src="{{ asset('images/building.jpg') }}" class="c-location-button--image"/>
           <span class="c-location-button--name">PCV</span>
         </a>
+      </div>
+      <div class="col s6 u-mrgn-top--4 u-float-none u-display-inline-block">
         <a href="#" class="c-location-button" data-location-id=2 @click="selectLocation($event.currentTarget)">
           <img src="{{ asset('images/building.jpg') }}" class="c-location-button--image"/>
-          <span class="c-location-button--name">Jason</span>
+          <span class="c-location-button--name">Ampera</span>
         </a>
       </div>
     </div>

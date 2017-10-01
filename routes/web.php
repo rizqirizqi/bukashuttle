@@ -15,13 +15,15 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/summary', function () {
+    return view('summary');
+});
+
 Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/summary', function () {
-    return view('summary');
-});
+Route::get('/summary', 'PagesController@summary');
 
 Route::get('/history', function () {
     return view('history');

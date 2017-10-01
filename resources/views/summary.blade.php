@@ -5,30 +5,32 @@
 
 @section('body')
   <div class="container u-mrgn-top--6">
-  	<h4 style="color:#d71149"><b>Orders</b></h2>
+  	<h4 class="u-fg--red-brand">Booking</b></h2>
     <div class="row">
       <div class="col s12">
         <div class="row" style="margin-bottom: 0!important">
       	  	<div class="col s6">
-          		<p style="font-size: 18px"><b>Route</b></p>
+          		<p style="font-size: 18px"><b>Rute</b></p>
           	</div>
           	<div class="col s6">
-          		<p style="font-size: 18px">PCV - Jason's</p>
+          		<p style="font-size: 18px">{{ $shuttleRoute }}</p>
           	</div>
         </div>
         <div class="row">
       	  	<div class="col s6">
-          		<p style="font-size: 18px"><b>Departure Time</b></p>
+          		<p style="font-size: 18px"><b>Berangkat jam</b></p>
           	</div>
           	<div class="col s6">
-          		<p style="font-size: 18px">17.30</p>
+          		<p style="font-size: 18px">{{ $departureTime }}</p>
           	</div>
         </div>
-        <div class="row">
-        	<div class="col s12 center">
-        		<a class="waves-effect btn" style="background-color: #d71149">Batalkan</a>
-        	</div>
-        </div>
+        @if (!$showCancel)
+          <div class="row">
+            <div class="col s12 center">
+              <a href="/" class="waves-effect btn u-bg--red-brand">Batalkan</a>
+            </div>
+          </div>
+        @endif
         <hr/>
       </div>
     </div>

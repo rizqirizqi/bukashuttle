@@ -105,6 +105,10 @@ $imported-global-settings: false !default;
   float: right;
 }
 
+.u-float-none {
+  float: none !important;
+}
+
 .u-clearfix {
   clear: both;
 }
