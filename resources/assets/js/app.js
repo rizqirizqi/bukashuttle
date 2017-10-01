@@ -11,19 +11,49 @@ Vue.component('example', require('./components/Example.vue'));
 const app = new Vue({
     el: '#app',
     data: {
-        originInstruction: 'Silakan pilih lokasi penjemputan:',
-        destinationInstruction: 'Silakan pilih lokasi tujuan:'
+        formStep: 0,
+        instruction: '',
+        bookingData: {
+            origin: null,
+            destination: null,
+            departure: null
+        },
+        originElem: null,
+        destinationElem: null
     },
     methods: {
-        selectOrigin: () => {
-            $('.js-instruction').text(this.destinationInstruction)
+        selectLocation ($thisEl) {
+            if (this.formStep == 0) {
+                this.selectOrigin($thisEl)
+            } else if (this.formStep == 1) {
+                this.selectDestination($thisEl)
+            } else {
+                return null
+            }
         },
-        selectDestination: () => {
-
+        selectOrigin ($thisEl) {
+            this.originElem = $thisEl
+            this.bookingData.origin = $(this.originElem).data('locationId')
+            this.instruction = 'Silakan pilih lokasi tujuan:'
+            this.formStep = 1
+            $(this.originElem).css({
+                filter: 'gray',
+                filter: 'grayscale(100%)'
+            })
+        },
+        selectDestination ($thisEl) {
+            this.destinationElem = $thisEl
+            this.bookingData.destination = $(this.destinationElem).data('locationId')
+            this.instruction = 'Silakan pilih jam keberangkatan:'
+            this.formStep = 2
+            $(this.destinationElem).css({
+                filter: 'gray',
+                filter: 'grayscale(100%)'
+            })
         }
     },
-    mounted: () => {
+    mounted () {
         $(".button-collapse").sideNav();
-        $('.js-instruction').text(this.originInstruction)
+        this.instruction = 'Silakan pilih lokasi penjemputan:'
     }
 });

@@ -232,7 +232,7 @@ module.exports = __webpack_require__(9);
 /***/ 9:
 /***/ (function(module, exports, __webpack_require__) {
 
-var _this = this;
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -245,18 +245,48 @@ Vue.component('example', __webpack_require__(33));
 var app = new Vue({
     el: '#app',
     data: {
-        originInstruction: 'Silakan pilih lokasi penjemputan:',
-        destinationInstruction: 'Silakan pilih lokasi tujuan:'
+        formStep: 0,
+        instruction: '',
+        bookingData: {
+            origin: null,
+            destination: null,
+            departure: null
+        },
+        originElem: null,
+        destinationElem: null
     },
     methods: {
-        selectOrigin: function selectOrigin() {
-            $('.js-instruction').text(_this.destinationInstruction);
+        selectLocation: function selectLocation($thisEl) {
+            if (this.formStep == 0) {
+                this.selectOrigin($thisEl);
+            } else if (this.formStep == 1) {
+                this.selectDestination($thisEl);
+            } else {
+                return null;
+            }
         },
-        selectDestination: function selectDestination() {}
+        selectOrigin: function selectOrigin($thisEl) {
+            this.originElem = $thisEl;
+            this.bookingData.origin = $(this.originElem).data('locationId');
+            this.instruction = 'Silakan pilih lokasi tujuan:';
+            this.formStep = 1;
+            $(this.originElem).css(_defineProperty({
+                filter: 'gray'
+            }, 'filter', 'grayscale(100%)'));
+        },
+        selectDestination: function selectDestination($thisEl) {
+            this.destinationElem = $thisEl;
+            this.bookingData.destination = $(this.destinationElem).data('locationId');
+            this.instruction = 'Silakan pilih jam keberangkatan:';
+            this.formStep = 2;
+            $(this.destinationElem).css(_defineProperty({
+                filter: 'gray'
+            }, 'filter', 'grayscale(100%)'));
+        }
     },
     mounted: function mounted() {
         $(".button-collapse").sideNav();
-        $('.js-instruction').text(_this.originInstruction);
+        this.instruction = 'Silakan pilih lokasi penjemputan:';
     }
 });
 
