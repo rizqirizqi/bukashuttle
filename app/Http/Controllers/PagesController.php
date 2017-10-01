@@ -30,9 +30,9 @@ class PagesController extends Controller
         foreach($departureSchedules as $departure) {
             if($departure["id"] == $departureId) {
                 $departureTime = $departure["time"];
-                $showCancel = $departure["isFull"];
+                $departureIsFull = $departure["isFull"];
             }
         }
-        return view('summary', ['shuttleRoute'=>$shuttleRoute, 'departureTime'=>$departureTime, 'showCancel'=>$showCancel]);
+        return view('summary', ['shuttleRoute'=>$shuttleRoute, 'departureTime'=>$departureTime, 'departureIsFull'=>$departureIsFull]);
     }
 }
